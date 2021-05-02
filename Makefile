@@ -8,4 +8,4 @@ main: $(OBJS) main.c
 	$(CC) -c $(CFLAGS) $< -o $@
 
 clean:
-	rm -f *~ *.o main
+	rm -f *~ *.o main server
