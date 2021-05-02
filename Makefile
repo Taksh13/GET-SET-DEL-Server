@@ -1,16 +1,11 @@
 CFLAGS = -Wall -g -std=gnu99 -O0
-LIBS = -lm
-SRCDIR = src
-BIN = main
-BIN_NAME = hashtable
 OBJS = hash.o table.o server.o
-DEFS =
 
-$(BIN): $(OBJS) $(SRCDIR)/$(BIN).c
-	$(CC) $(CFLAGS) $(DEFS) $(OBJS) $(SRCDIR)/$(BIN).c -o $(BIN_NAME) $(LIBS)
+main: $(OBJS) main.c
+	$(CC) $(CFLAGS) $(OBJS) main.c -o server -lm
 
-%.o: $(SRCDIR)/%.c $(SRCDIR)/%.h
-	$(CC) -c $(CFLAGS) $(DEFS) $< -o $@
+%.o: %.c %.h
+	$(CC) -c $(CFLAGS) $< -o $@
 
 clean:
-	rm -f *~ *.o $(BIN)
+	rm -f *~ *.o main
